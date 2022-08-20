@@ -247,11 +247,11 @@ sizes: dropbear
 	objdump -t dropbear|grep ".text"|cut -d "." -f 2|sort -rn
 
 sign:
-	codesign -f -s 'Apple Development: Wen Cheng (Y9UU5S8ZW7)' --entitlements Ent.plist dropbear$(EXEEXT)
-	codesign -f -s 'Apple Development: Wen Cheng (Y9UU5S8ZW7)' --entitlements Ent.plist dbclient$(EXEEXT)
-	codesign -f -s 'Apple Development: Wen Cheng (Y9UU5S8ZW7)' --entitlements Ent.plist dropbearkey$(EXEEXT)
-	codesign -f -s 'Apple Development: Wen Cheng (Y9UU5S8ZW7)' --entitlements Ent.plist dropbearconvert$(EXEEXT)
-	codesign -f -s 'Apple Development: Wen Cheng (Y9UU5S8ZW7)' --entitlements Ent.plist scp$(EXEEXT)
+	jtool --sign --inplace --ent Ent.plist dropbear$(EXEEXT)
+	jtool --sign --inplace --ent Ent.plist dbclient$(EXEEXT)
+	jtool --sign --inplace --ent Ent.plist dropbearkey$(EXEEXT)
+	jtool --sign --inplace --ent Ent.plist dropbearconvert$(EXEEXT)
+	jtool --sign --inplace --ent Ent.plist scp$(EXEEXT)
 	
 clean: $(LIBTOM_CLEAN) thisclean
 
